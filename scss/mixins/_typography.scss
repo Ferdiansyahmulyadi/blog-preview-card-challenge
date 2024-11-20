@@ -1,0 +1,19 @@
+@use '../functions' as *;
+@use '../variables' as *;
+@use 'sass:map';
+
+//prettier-ignore
+$text-presets: (
+  'figtree-extra-bold-L': ('font-weight': 800, 'font-size': clamp(rem-calc(18), rem-calc(375), rem-calc(24)), 'line-height': 150%, 'letter-spacing': 0px),
+  'figtree-medium-M': ('font-weight': 500, 'font-size': clamp(rem-calc(12), rem-calc(375), rem-calc(16)), 'line-height': 150%, 'letter-spacing': 0px),
+  'figtree-medium-S': ('font-weight': 500, 'font-size': clamp(rem-calc(10.5), rem-calc(375), rem-calc(14)), 'line-height': 150%, 'letter-spacing': 0px),
+  'figtree-extra-bold-S': ('font-weight': 800, 'font-size': clamp(rem-calc(10.5), rem-calc(375), rem-calc(14)), 'line-height': 150%, 'letter-spacing': 0px),
+);
+
+@mixin typography($text-preset) {
+  $preset: map.get($text-presets, $text-preset);
+  font-weight: map.get($preset, 'font-weight');
+  font-size: map.get($preset, 'font-size');
+  line-height: map.get($preset, 'line-height');
+  letter-spacing: map.get($preset, 'letter-spacing');
+}
